@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package notifications.v1;
+
+option go_package = "github.com/manovaspace/orbit-notifications/api/notifications/v1;notificationsv1";
+
+service NotificationsService {
+  rpc Send(SendRequest) returns (SendResponse);
+  rpc ListDeliveries(ListDeliveriesRequest) returns (ListDeliveriesResponse);
+}
+
+message SendRequest {
+  string template = 1;
+  string channel = 2;
+  string recipient = 3;
+  map<string, string> vars = 4;
+  string correlation_id = 5;
+}
+
+message SendResponse {
+  string delivery_id = 1;
+  string status = 2;
+}
+
+message ListDeliveriesRequest {
+  int32 limit = 1;
+  string channel = 2;
+}
+
+message DeliveryRecord {
+  string id = 1;
+  string template = 2;
+  string channel = 3;
+  string status = 4;
+  string correlation_id = 5;
+  string created_at = 6;
+  string dev_payload = 7;
+}
+
+message ListDeliveriesResponse {
+  repeated DeliveryRecord deliveries = 1;
+}
