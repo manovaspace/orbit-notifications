@@ -9,7 +9,7 @@ require (
 	github.com/manovaspace/orbit-observability v0.0.0-20260725231019-30ea88222a79
 	github.com/open-feature/go-sdk v1.17.2
 	github.com/open-feature/go-sdk-contrib/providers/unleash v0.1.1-alpha
-	google.golang.org/grpc v1.82.0
+	google.golang.org/grpc v1.82.1
 	google.golang.org/protobuf v1.36.11
 )
 
