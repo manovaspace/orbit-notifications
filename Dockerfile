@@ -1,17 +1,24 @@
+# Standalone image build (GitHub/GHCR). Local monorepo replace dirs are stripped;
+# public manovaspace modules are fetched from the module proxy (@main until semver tags).
 FROM golang:1.26-alpine AS builder
 RUN apk add --no-cache git ca-certificates
-ENV GOPROXY=direct
-WORKDIR /src/orbit/orbit-notifications
-COPY orbit/orbit-observability /src/orbit/orbit-observability
-COPY orbit/orbit-notifications/go.mod orbit/orbit-notifications/go.sum ./
-RUN go mod download
-COPY orbit/orbit-notifications/ .
-RUN CGO_ENABLED=0 go build -o /notifications ./cmd/notifications
+ENV GOPROXY=https://proxy.golang.org,direct
+ENV GONOSUMDB=github.com/manovaspace/*
+WORKDIR /src
+COPY . .
+RUN set -euo pipefail \
+	&& sed -i '/^replace (/,/^)/d' go.mod \
+	&& sed -i '/^replace /d' go.mod \
+	&& go mod edit -droprequire=github.com/manovaspace/orbit-observability \
+	&& go get github.com/manovaspace/orbit-observability@main \
+	&& go mod tidy \
+	&& CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /notifications ./cmd/notifications
 
 FROM alpine:3.21
 RUN apk add --no-cache ca-certificates
 WORKDIR /app
 COPY --from=builder /notifications /app/notifications
-COPY orbit/orbit-notifications/migrations /app/migrations
+COPY --from=builder /src/migrations /app/migrations
 EXPOSE 10110
+USER nobody
 CMD ["/app/notifications"]
