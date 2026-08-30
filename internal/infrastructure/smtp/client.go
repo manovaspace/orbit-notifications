@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-// Client sends mail via SMTP (Mailcow prod or Mailpit dev).
+// Client sends mail via SMTP (Stalwart prod or Mailpit dev).
 type Client struct {
 	host string
 	port string
@@ -32,9 +32,9 @@ func NewFromEnv() (*Client, error) {
 	}, nil
 }
 
-func (c *Client) Send(ctx context.Context, to, subject, body string) error {
+func (c *Client) Send(ctx context.Context, to, subject, text, html string) error {
 	addr := fmt.Sprintf("%s:%s", c.host, c.port)
-	msg := []byte(fmt.Sprintf("From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n%s", c.from, to, subject, body))
+	msg := BuildMIME(c.from, to, subject, text, html)
 
 	d := net.Dialer{Timeout: 10 * time.Second}
 	conn, err := d.DialContext(ctx, "tcp", addr)

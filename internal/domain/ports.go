@@ -34,5 +34,5 @@ type DeliveryRepository interface {
 
 // MailSender delivers email messages.
 type MailSender interface {
-	Send(ctx context.Context, to, subject, body string) error
+	Send(ctx context.Context, to, subject, text, html string) error
 }

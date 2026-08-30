@@ -1,0 +1,3 @@
+Your one-time login code is: {{.code}}
+
+It expires in {{.expires_in}}.

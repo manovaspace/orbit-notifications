@@ -1,0 +1,11 @@
+Welcome to Manova, {{.name}}.
+
+You have been invited to join the Manova engineering workspace.
+
+CLI: {{.cli_command}}
+Fresh machine: {{.curl_command}}
+
+Token (keep private): {{.token}}
+{{if .expires_in}}Expires in: {{.expires_in}}{{end}}{{if .expires_at}} ({{.expires_at}}){{end}}
+
+If you did not expect this invitation, contact security@manova.space.

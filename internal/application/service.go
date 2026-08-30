@@ -39,7 +39,7 @@ func (s *Service) Send(ctx context.Context, in domain.SendInput) (domain.Deliver
 		return domain.DeliveryRecord{}, fmt.Errorf("send: template, channel, and recipient required")
 	}
 
-	subject, body, err := templates.Render(in.Template, in.Vars)
+	res, err := templates.Render(in.Template, in.Vars)
 	if err != nil {
 		return domain.DeliveryRecord{}, err
 	}
@@ -57,14 +57,14 @@ func (s *Service) Send(ctx context.Context, in domain.SendInput) (domain.Deliver
 	if s.isDev && s.devPayloadEnabled(ctx) {
 		payload, _ := json.Marshal(map[string]string{
 			"recipient": in.Recipient,
-			"subject":   subject,
-			"body":      body,
+			"subject":   res.Subject,
+			"body":      res.Text,
 		})
 		record.DevPayload = string(payload)
 	}
 
 	if in.Channel == "email" {
-		if err := s.mail.Send(ctx, in.Recipient, subject, body); err != nil {
+		if err := s.mail.Send(ctx, in.Recipient, res.Subject, res.Text, res.HTML); err != nil {
 			record.Status = "failed"
 			_ = s.repo.Insert(ctx, record)
 			return record, err
