@@ -6,10 +6,10 @@ require (
 	github.com/Unleash/unleash-client-go/v4 v4.5.0
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.10.0
-	github.com/manovaspace/orbit-observability v0.0.0-20260725231019-30ea88222a79
+	github.com/manovaspace/orbit-observability v0.0.0
 	github.com/open-feature/go-sdk v1.17.2
 	github.com/open-feature/go-sdk-contrib/providers/unleash v0.1.1-alpha
-	google.golang.org/grpc v1.82.1
+	google.golang.org/grpc v1.82.0
 	google.golang.org/protobuf v1.36.11
 )
 
@@ -50,3 +50,5 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260630182238-925bb5da69e7 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace github.com/manovaspace/orbit-observability => ../orbit-observability
