@@ -16,7 +16,4 @@ func TestBuildMIME_multipart(t *testing.T) {
 	if !strings.Contains(msg, "text-body") || !strings.Contains(msg, "<p>html</p>") {
 		t.Fatal(msg)
 	}
-	if strings.Contains(msg, "123456") && strings.Contains(msg, "Subject:") {
-		// subject in this fixture has no code
-	}
 }

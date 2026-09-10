@@ -63,20 +63,21 @@ func (s *Service) Send(ctx context.Context, in domain.SendInput) (domain.Deliver
 		record.DevPayload = string(payload)
 	}
 
-	if in.Channel == "email" {
+	switch in.Channel {
+	case "email":
 		if err := s.mail.Send(ctx, in.Recipient, res.Subject, res.Text, res.HTML); err != nil {
 			record.Status = "failed"
 			_ = s.repo.Insert(ctx, record)
 			return record, err
 		}
-	} else if in.Channel == "sms" {
+	case "sms":
 		// ponytail: dev records dev_payload only; prod needs SMSSender (not wired yet)
 		if !s.isDev {
 			record.Status = "failed"
 			_ = s.repo.Insert(ctx, record)
 			return record, fmt.Errorf("send: sms provider not configured")
 		}
-	} else {
+	default:
 		return domain.DeliveryRecord{}, fmt.Errorf("send: unsupported channel %q", in.Channel)
 	}
 

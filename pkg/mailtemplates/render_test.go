@@ -99,9 +99,7 @@ func TestRender_otp_login_html_letter(t *testing.T) {
 	if strings.Contains(res.HTML, "#09090b") || strings.Contains(res.HTML, "display:flex") || strings.Contains(res.HTML, "display: flex") {
 		t.Fatal("html still dark/flex")
 	}
-	if !strings.Contains(res.HTML, "{{.code}}") {
-		// after execute the action is gone; assert executed code instead (already did)
-	}
+	// after execute the action is gone; assert executed code instead (already did)
 	if !strings.Contains(res.HTML, "role=\"presentation\"") && !strings.Contains(res.HTML, "role='presentation'") {
 		t.Fatal("expected table presentation role from MJML")
 	}
@@ -130,9 +128,6 @@ func TestRender_invite_html_command_hero(t *testing.T) {
 	}
 	if !strings.Contains(res.HTML, "orbit onboard") {
 		t.Fatal("html missing command")
-	}
-	if strings.Contains(res.HTML, "font-size:32px") && strings.Contains(res.HTML[strings.Index(res.HTML, token):], "letter-spacing") {
-		// crude: token must not appear in a 32px letter-spaced node
 	}
 	idx := strings.Index(res.HTML, token)
 	if idx < 0 {
