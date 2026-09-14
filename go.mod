@@ -5,7 +5,7 @@ go 1.26.0
 require (
 	github.com/Unleash/unleash-client-go/v4 v4.5.0
 	github.com/google/uuid v1.6.0
-	github.com/jackc/pgx/v5 v5.10.0
+	github.com/jackc/pgx/v5 v5.11.0
 	github.com/manovaspace/orbit-observability v0.0.0
 	github.com/open-feature/go-sdk v1.18.0
 	github.com/open-feature/go-sdk-contrib/providers/unleash v0.1.1-alpha
