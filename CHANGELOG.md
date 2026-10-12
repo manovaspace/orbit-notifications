@@ -10,3 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial public MIT release.
+
+### Changed
+
+- Pin orbit-observability to an immutable Go pseudo-version so downstream consumers do not depend on local replace directives.
+- Build container images from the committed module graph instead of resolving orbit-observability from `main` during the image build.
