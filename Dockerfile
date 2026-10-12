@@ -1,18 +1,12 @@
-# Standalone image build (GitHub/GHCR). Local monorepo replace dirs are stripped;
-# public manovaspace modules are fetched from the module proxy (@main until semver tags).
+# Standalone image build (GitHub/GHCR) using the committed, checksum-verified module graph.
 FROM golang:1.26-alpine AS builder
 RUN apk add --no-cache git ca-certificates
 ENV GOPROXY=https://proxy.golang.org,direct
-ENV GONOSUMDB=github.com/manovaspace/*
 WORKDIR /src
+COPY go.mod go.sum ./
+RUN go mod download
 COPY . .
-RUN set -euo pipefail \
-	&& sed -i '/^replace (/,/^)/d' go.mod \
-	&& sed -i '/^replace /d' go.mod \
-	&& go mod edit -droprequire=github.com/manovaspace/orbit-observability \
-	&& go get github.com/manovaspace/orbit-observability@main \
-	&& go mod tidy \
-	&& CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /notifications ./cmd/notifications
+RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /notifications ./cmd/notifications
 
 FROM alpine:3.21
 RUN apk add --no-cache ca-certificates
