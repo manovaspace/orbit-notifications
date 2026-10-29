@@ -6,7 +6,7 @@ gRPC email notifications service. Status: `beta`. MIT — `github.com/manovaspac
 
 ```bash
 export DEPLOYMENT_ENVIRONMENT=dev
-export DATABASE_URL=postgres://orbit:orbit@localhost:10332/notifications?sslmode=disable
+export DATABASE_URL=postgres://notifications:<password>@127.0.0.1:10333/notifications?sslmode=disable
 export SMTP_FROM=noreply@manova.space
 export SMTP_HOST=localhost
 export SMTP_PORT=10725
