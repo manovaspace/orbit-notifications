@@ -116,7 +116,7 @@ func TestCompiledHTMLKeepsGoActions(t *testing.T) {
 }
 
 func TestRender_invite_html_command_hero(t *testing.T) {
-	token := "manova-inv.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.sigpad"
+	token := "manova-inv.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.sigpad" // gitleaks:allow
 	res, err := Render("invite_developer", map[string]string{
 		"name":         "Alex Smith",
 		"token":        token,
