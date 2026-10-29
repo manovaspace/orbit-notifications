@@ -7,14 +7,14 @@ import (
 	"os"
 	"time"
 
-	observability "github.com/manovaspace/orbit-observability"
+	"github.com/jackc/pgx/v5/pgxpool"
 	notificationsv1 "github.com/manovaspace/orbit-notifications/api/notifications/v1"
 	"github.com/manovaspace/orbit-notifications/internal/application"
-	grpchandlers "github.com/manovaspace/orbit-notifications/internal/infrastructure/grpc"
 	"github.com/manovaspace/orbit-notifications/internal/infrastructure/featureflags"
+	grpchandlers "github.com/manovaspace/orbit-notifications/internal/infrastructure/grpc"
 	"github.com/manovaspace/orbit-notifications/internal/infrastructure/postgres"
 	"github.com/manovaspace/orbit-notifications/internal/infrastructure/smtp"
-	"github.com/jackc/pgx/v5/pgxpool"
+	observability "github.com/manovaspace/orbit-observability"
 	googlegrpc "google.golang.org/grpc"
 )
 
