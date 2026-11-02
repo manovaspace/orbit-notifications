@@ -79,7 +79,9 @@ The tag push triggers `Publish image` (`.github/workflows/publish-image.yml`), w
 `ghcr.io/manovaspace/orbit-notifications:X.Y.Z`, `:X.Y`, `:latest` and `:edge`. Nothing is deployed:
 the repository has no deploy workflow, so the image is consumed by whatever deployment pins it
 (production pins images by digest, ADR-044 D5). Running `Publish image` manually with
-`workflow_dispatch` pushes `:edge` and a `sha-<short>` tag without a release.
+`workflow_dispatch` pushes `:edge` and a `sha-<short>` tag without a release. To rebuild the image for
+an existing release tag, run `gh workflow run "Publish image" --ref main -f source_tag=vX.Y.Z`, which
+republishes the semver, `:latest` and `:edge` tags from that tag's source commit.
 
 ## Rollback
 
