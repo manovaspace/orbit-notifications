@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1](https://github.com/manovaspace/orbit-notifications/compare/v0.1.0...v0.1.1) (2026-11-02)
+
+
+### Bug Fixes
+
+* **featureflags:** register the Unleash provider without blocking ([#27](https://github.com/manovaspace/orbit-notifications/issues/27)) ([e0c96e6](https://github.com/manovaspace/orbit-notifications/commit/e0c96e69e194fd59c080b23abbb053ec30d447e1))
+* **featureflags:** stop waiting forever for Unleash at startup ([#25](https://github.com/manovaspace/orbit-notifications/issues/25)) ([e6caff4](https://github.com/manovaspace/orbit-notifications/commit/e6caff42b5170a216504607210dd13c10b7d5c07))
+
 ## 0.1.0 (2026-11-02)
 
 
