@@ -3,9 +3,52 @@ version: "2"
 linters:
   default: none
   enable:
+    - depguard
     - errcheck
     - govet
     - ineffassign
     - staticcheck
     - unused
-
+  settings:
+    depguard:
+      rules:
+        # The domain is pure types and ports. It imports no driver, HTTP
+        # server, process execution or adapter.
+        notifications-domain:
+          files:
+            - "**/internal/domain/**"
+          deny:
+            - pkg: "database/sql"
+              desc: "internal/domain declares the Store port; SQL lives in infrastructure"
+            - pkg: "github.com/jackc/pgx"
+              desc: "internal/domain has no database driver"
+            - pkg: "net/http"
+              desc: "internal/domain has no HTTP server"
+            - pkg: "github.com/gofiber"
+              desc: "internal/domain has no HTTP framework"
+            - pkg: "github.com/valyala/fasthttp"
+              desc: "internal/domain has no HTTP framework"
+            - pkg: "os/exec"
+              desc: "internal/domain is pure and runs no process"
+            - pkg: "github.com/manovaspace/orbit-notifications/internal/infrastructure"
+              desc: "internal/domain must not depend on an adapter"
+        # The application layer reaches the outside world only through the
+        # domain ports it receives in Deps.
+        notifications-application:
+          files:
+            - "**/internal/application/**"
+          deny:
+            - pkg: "database/sql"
+              desc: "internal/application reaches Postgres through domain.Store"
+            - pkg: "github.com/jackc/pgx"
+              desc: "internal/application reaches Postgres through domain.Store"
+            - pkg: "net/http"
+              desc: "internal/application has no HTTP server"
+            - pkg: "github.com/gofiber"
+              desc: "internal/application has no HTTP framework"
+            - pkg: "github.com/valyala/fasthttp"
+              desc: "internal/application has no HTTP framework"
+            - pkg: "os/exec"
+              desc: "internal/application runs no process"
+            - pkg: "github.com/manovaspace/orbit-notifications/internal/infrastructure"
+              desc: "internal/application must not depend on an adapter"

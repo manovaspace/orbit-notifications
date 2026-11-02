@@ -1,4 +1,7 @@
 -- +goose Up
+-- Adoption: the previous custom runner applied this file without recording a
+-- version row. Every statement is IF NOT EXISTS, so running it on a database
+-- that already has these objects is a no-op. Do not remove the guards.
 CREATE TABLE IF NOT EXISTS delivery_records (
     id UUID PRIMARY KEY,
     template TEXT NOT NULL,

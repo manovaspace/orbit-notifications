@@ -4,17 +4,22 @@ import (
 	"context"
 
 	notificationsv1 "github.com/manovaspace/orbit-notifications/api/notifications/v1"
-	"github.com/manovaspace/orbit-notifications/internal/application"
 	"github.com/manovaspace/orbit-notifications/internal/domain"
 )
 
-// Server implements NotificationsService gRPC API.
-type Server struct {
-	notificationsv1.UnimplementedNotificationsServiceServer
-	svc *application.Service
+// Notifier is the port the gRPC adapter needs from the application layer.
+type Notifier interface {
+	Send(ctx context.Context, in domain.SendInput) (domain.DeliveryRecord, error)
+	ListDeliveries(ctx context.Context, limit int, channel string) ([]domain.DeliveryRecord, error)
 }
 
-func New(svc *application.Service) *Server {
+// Server implements the NotificationsService gRPC API.
+type Server struct {
+	notificationsv1.UnimplementedNotificationsServiceServer
+	svc Notifier
+}
+
+func New(svc Notifier) *Server {
 	return &Server{svc: svc}
 }
 
