@@ -1,0 +1,10 @@
+Hello,
+
+{{.inviter_name}} invited you to join {{.org_name}}.
+
+Invite code: {{.accept_token}}
+
+Paste this code in the Manova app to accept the invitation.
+This invitation expires at: {{.expires_at}}
+
+If you did not expect this invitation, ignore it or contact security@manova.space.
