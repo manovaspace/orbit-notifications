@@ -1,0 +1,26 @@
+<mjml lang="fa" dir="rtl">
+  <mj-head>
+    <mj-title>دعوت به سازمان — Manova</mj-title>
+    <mj-preview>{{.preheader}}</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Helvetica, Arial, sans-serif" />
+      <mj-text color="#0a0a0a" font-size="14px" line-height="22px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#fafafa">
+    <mj-section direction="rtl" background-color="#ffffff" padding="32px">
+      <mj-column direction="rtl">
+        <mj-text font-size="11px" color="#545454" padding-bottom="8px" align="right">Manova</mj-text>
+        <mj-divider border-color="#e7e7e7" border-width="1px" padding="0 0 24px 0" />
+        <mj-text font-size="22px" font-weight="600" padding-bottom="12px" align="right">دعوت به سازمان</mj-text>
+        <mj-text color="#545454" padding-bottom="20px" align="right">{{.inviter_name}} شما را به سازمان {{.org_name}} دعوت کرده است.</mj-text>
+        <mj-text color="#545454" padding-bottom="8px" align="right">کد دعوت:</mj-text>
+        <mj-text font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="24px" font-weight="700" color="#2563eb" letter-spacing="2px" align="center" padding="8px 0 4px 0"><span dir="ltr">{{.accept_token}}</span></mj-text>
+        <mj-divider border-color="#2563eb" border-width="2px" width="160px" align="center" padding="0 0 24px 0" />
+        <mj-text color="#545454" padding-bottom="12px" align="right">این کد را در برنامه Manova جایگذاری کنید و دعوت را بپذیرید.</mj-text>
+        <mj-text color="#545454" padding-bottom="12px" align="right">اعتبار دعوت تا: {{.expires_at}}</mj-text>
+        <mj-text font-size="11px" color="#545454" align="right">اگر انتظار این دعوت را نداشتید، آن را نادیده بگیرید یا با security@manova.space تماس بگیرید.</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

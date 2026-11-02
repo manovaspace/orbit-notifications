@@ -1,0 +1,26 @@
+<mjml lang="en" dir="ltr">
+  <mj-head>
+    <mj-title>Organization invitation — Manova</mj-title>
+    <mj-preview>{{.preheader}}</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" />
+      <mj-text color="#0a0a0a" font-size="14px" line-height="22px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#fafafa">
+    <mj-section direction="ltr" background-color="#ffffff" padding="32px">
+      <mj-column direction="ltr">
+        <mj-text font-size="11px" color="#545454" padding-bottom="8px">Manova</mj-text>
+        <mj-divider border-color="#e7e7e7" border-width="1px" padding="0 0 24px 0" />
+        <mj-text font-size="22px" font-weight="600" padding-bottom="12px">Organization invitation</mj-text>
+        <mj-text color="#545454" padding-bottom="20px">{{.inviter_name}} invited you to join {{.org_name}}.</mj-text>
+        <mj-text color="#545454" padding-bottom="8px">Invite code:</mj-text>
+        <mj-text font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="24px" font-weight="700" color="#2563eb" letter-spacing="2px" align="center" padding="8px 0 4px 0">{{.accept_token}}</mj-text>
+        <mj-divider border-color="#2563eb" border-width="2px" width="160px" align="center" padding="0 0 24px 0" />
+        <mj-text color="#545454" padding-bottom="12px">Paste this code in the Manova app to accept the invitation.</mj-text>
+        <mj-text color="#545454" padding-bottom="12px">This invitation expires at: {{.expires_at}}</mj-text>
+        <mj-text font-size="11px" color="#545454">If you did not expect this invitation, ignore it or contact security@manova.space.</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

@@ -1,0 +1,24 @@
+<mjml lang="fa" dir="rtl">
+  <mj-head>
+    <mj-title>کد تأیید Manova</mj-title>
+    <mj-preview>{{.preheader}}</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Helvetica, Arial, sans-serif" />
+      <mj-text color="#0a0a0a" font-size="14px" line-height="22px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#fafafa">
+    <mj-section direction="rtl" background-color="#ffffff" padding="32px">
+      <mj-column direction="rtl">
+        <mj-text font-size="11px" color="#545454" padding-bottom="8px" align="right">Manova</mj-text>
+        <mj-divider border-color="#e7e7e7" border-width="1px" padding="0 0 24px 0" />
+        <mj-text font-size="22px" font-weight="600" padding-bottom="12px" align="right">کد تأیید حساب</mj-text>
+        <mj-text color="#545454" padding-bottom="20px" align="right">برای تأیید حساب جدید، این کد را در برنامه Manova وارد کنید.</mj-text>
+        <mj-text font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="32px" font-weight="700" color="#2563eb" letter-spacing="6px" align="center" padding="8px 0 4px 0">{{.code}}</mj-text>
+        <mj-divider border-color="#2563eb" border-width="2px" width="160px" align="center" padding="0 0 24px 0" />
+        <mj-text color="#545454" padding-bottom="12px" align="right">این کد تا {{.expires_in_minutes}} دقیقه دیگر معتبر است.</mj-text>
+        <mj-text font-size="11px" color="#545454" align="right">اگر این درخواست را نداده‌اید، پیام را نادیده بگیرید یا با security@manova.space تماس بگیرید. هرگز این کد را به اشتراک نگذارید.</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
