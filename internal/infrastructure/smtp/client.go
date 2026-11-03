@@ -57,9 +57,14 @@ func (c *Client) Send(ctx context.Context, to, subject, text, html string) error
 			return err
 		}
 	}
+	// Only authenticate when the server advertises AUTH. Mailpit (tests and dev)
+	// accepts mail without it; calling Auth anyway fails with "command not
+	// implemented".
 	if c.user != "" {
-		if err := client.Auth(smtp.PlainAuth("", c.user, c.pass, c.host)); err != nil {
-			return err
+		if ok, _ := client.Extension("AUTH"); ok {
+			if err := client.Auth(smtp.PlainAuth("", c.user, c.pass, c.host)); err != nil {
+				return err
+			}
 		}
 	}
 	if err := client.Mail(c.from); err != nil {
