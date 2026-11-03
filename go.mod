@@ -3,20 +3,17 @@ module github.com/manovaspace/orbit-notifications
 go 1.27.3
 
 require (
-	github.com/Unleash/unleash-client-go/v4 v4.5.0
 	github.com/gofiber/fiber/v3 v3.6.1
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.12.0
 	github.com/manovaspace/orbit-observability v0.0.0-20261030132041-1f2432c107ee
 	github.com/open-feature/go-sdk v1.20.0
-	github.com/open-feature/go-sdk-contrib/providers/unleash v0.1.1-alpha
 	github.com/pressly/goose/v3 v3.29.0
 	google.golang.org/grpc v1.85.0
 	google.golang.org/protobuf v1.36.12
 )
 
 require (
-	github.com/Masterminds/semver/v3 v3.5.0 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/felixge/httpsnoop v1.1.0 // indirect
@@ -36,10 +33,7 @@ require (
 	github.com/molecule-man/go-brrr v1.3.0 // indirect
 	github.com/philhofer/fwd v1.2.0 // indirect
 	github.com/sethvargo/go-retry v0.5.0 // indirect
-	github.com/stretchr/objx v0.8.0 // indirect
-	github.com/stretchr/testify v1.12.1 // indirect
 	github.com/tinylib/msgp v1.6.5 // indirect
-	github.com/twmb/murmur3 v1.2.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.75.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
