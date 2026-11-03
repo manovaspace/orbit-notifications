@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1](https://github.com/manovaspace/orbit-notifications/compare/v0.3.0...v0.3.1) (2026-11-03)
+
+
+### Bug Fixes
+
+* **build:** report the real service version ([#47](https://github.com/manovaspace/orbit-notifications/issues/47)) ([8e1df04](https://github.com/manovaspace/orbit-notifications/commit/8e1df040fcd2e780596b291d3b7b6db29cc6b83f))
+
 ## [0.3.0](https://github.com/manovaspace/orbit-notifications/compare/v0.2.0...v0.3.0) (2026-11-03)
 
 
