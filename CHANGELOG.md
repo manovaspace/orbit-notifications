@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.2](https://github.com/manovaspace/orbit-notifications/compare/v0.3.1...v0.3.2) (2026-11-03)
+
+
+### Bug Fixes
+
+* **smtp:** authenticate only when the server advertises AUTH ([#51](https://github.com/manovaspace/orbit-notifications/issues/51)) ([72ae571](https://github.com/manovaspace/orbit-notifications/commit/72ae5713da44f381feb1c9f593509c74636a1b8d))
+* **smtp:** upgrade to STARTTLS before AUTH ([#49](https://github.com/manovaspace/orbit-notifications/issues/49)) ([ebb039d](https://github.com/manovaspace/orbit-notifications/commit/ebb039ddc5cef542d87e028411939d2c1a041dbf))
+
 ## [0.3.1](https://github.com/manovaspace/orbit-notifications/compare/v0.3.0...v0.3.1) (2026-11-03)
 
 
