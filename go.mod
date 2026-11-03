@@ -3,7 +3,7 @@ module github.com/manovaspace/orbit-notifications
 go 1.27.3
 
 require (
-	github.com/Unleash/unleash-client-go/v4 v4.5.0
+	github.com/Unleash/unleash-client-go/v6 v6.5.1
 	github.com/gofiber/fiber/v3 v3.6.1
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.12.0
