@@ -22,9 +22,11 @@ import (
 	googlegrpc "google.golang.org/grpc"
 )
 
+var version = "dev"
+
 func main() {
 	ctx := context.Background()
-	if err := observability.Configure(observability.ConfigFromEnv("orbit-notifications", "0.1.0")); err != nil {
+	if err := observability.Configure(observability.ConfigFromEnv("orbit-notifications", version)); err != nil {
 		panic(err)
 	}
 	log := observability.Logger()
