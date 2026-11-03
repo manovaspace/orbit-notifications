@@ -2,6 +2,7 @@ package smtp
 
 import (
 	"context"
+	"crypto/tls"
 	"fmt"
 	"net"
 	"net/smtp"
@@ -48,6 +49,14 @@ func (c *Client) Send(ctx context.Context, to, subject, text, html string) error
 	}
 	defer func() { _ = client.Close() }()
 
+	// Submission servers (Stalwart on 587) refuse AUTH before STARTTLS. Upgrade
+	// when the server offers it; Mailpit in dev does not, so the check keeps the
+	// plain path working.
+	if ok, _ := client.Extension("STARTTLS"); ok {
+		if err := client.StartTLS(&tls.Config{ServerName: c.host, MinVersion: tls.VersionTLS12}); err != nil {
+			return err
+		}
+	}
 	if c.user != "" {
 		if err := client.Auth(smtp.PlainAuth("", c.user, c.pass, c.host)); err != nil {
 			return err
