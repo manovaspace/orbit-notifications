@@ -17,7 +17,7 @@ export DEPLOYMENT_ENVIRONMENT=dev
 export DATABASE_URL=postgres://notifications:<password>@127.0.0.1:10333/notifications?sslmode=disable
 export SMTP_FROM=noreply@manova.space
 export SMTP_HOST=localhost
-export SMTP_PORT=10725
+export SMTP_PORT=10024
 export GRPC_PORT=10110
 export HEALTH_PORT=10111
 go run ./cmd/notifications

@@ -26,7 +26,7 @@ func NewFromEnv() (*Client, error) {
 	}
 	return &Client{
 		host: envOr("SMTP_HOST", "localhost"),
-		port: envOr("SMTP_PORT", "10725"),
+		port: envOr("SMTP_PORT", "10024"),
 		user: os.Getenv("SMTP_USER"),
 		pass: os.Getenv("SMTP_PASS"),
 		from: from,
