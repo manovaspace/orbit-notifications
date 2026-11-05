@@ -14,12 +14,12 @@ gRPC email notifications service. Status: `beta`. MIT — `github.com/manovaspac
 
 ```bash
 export DEPLOYMENT_ENVIRONMENT=dev
-export DATABASE_URL=postgres://notifications:<password>@127.0.0.1:10333/notifications?sslmode=disable
+export DATABASE_URL=postgres://notifications:<password>@127.0.0.1:10000/notifications?sslmode=disable
 export SMTP_FROM=noreply@manova.space
 export SMTP_HOST=localhost
 export SMTP_PORT=10024
-export GRPC_PORT=10110
-export HEALTH_PORT=10111
+export GRPC_PORT=10012
+export HEALTH_PORT=10013
 go run ./cmd/notifications
 go run ./cmd/notifications migrate status   # up, down, status
 go test ./...
@@ -28,7 +28,7 @@ go run github.com/sqlc-dev/sqlc/cmd/sqlc@v1.31.1 generate
 ./scripts/generate-proto.sh   # after proto changes
 ```
 
-Ports: gRPC on **10110** (`GRPC_PORT`), HTTP health on **10111** (`HEALTH_PORT`, `/healthz`, `/readyz`). HTTP runs on Fiber v3; gRPC is unchanged.
+Ports: gRPC on **10012** (`GRPC_PORT`), HTTP health on **10013** (`HEALTH_PORT`, `/healthz`, `/readyz`). HTTP runs on Fiber v3; gRPC is unchanged.
 
 ## Architecture
 

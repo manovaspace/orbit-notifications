@@ -76,7 +76,7 @@ func main() {
 		Logger: func(msg string, args ...any) { log.Info(msg, args...) },
 	})
 
-	grpcPort := envOr("GRPC_PORT", "10110")
+	grpcPort := envOr("GRPC_PORT", "10012")
 	lis, err := net.Listen("tcp", ":"+grpcPort)
 	if err != nil {
 		log.Error("listen failed", "error", err)
@@ -87,7 +87,7 @@ func main() {
 	notificationsv1.RegisterNotificationsServiceServer(gs, grpchandlers.New(svc))
 
 	health := httpapi.New()
-	healthPort := envOr("HEALTH_PORT", "10111")
+	healthPort := envOr("HEALTH_PORT", "10013")
 
 	go func() {
 		log.Info("grpc listening", "port", grpcPort)

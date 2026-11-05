@@ -13,6 +13,6 @@ FROM alpine:3.24
 RUN apk add --no-cache ca-certificates
 WORKDIR /app
 COPY --from=builder /notifications /app/notifications
-EXPOSE 10110
+EXPOSE 10012 10013
 USER nobody
 CMD ["/app/notifications"]
