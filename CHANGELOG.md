@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0](https://github.com/manovaspace/orbit-notifications/compare/v0.3.2...v0.4.0) (2026-11-05)
+
+
+### Features
+
+* **dev:** use the orbit-block dev tooling ports ([65e26a4](https://github.com/manovaspace/orbit-notifications/commit/65e26a467b4d407850e9e2483e94665920fe5d52))
+* **dev:** use the orbit-block dev tooling ports ([54c2996](https://github.com/manovaspace/orbit-notifications/commit/54c2996891be27ff9f9c2469b7f3f5f081776a73))
+
 ## [0.3.2](https://github.com/manovaspace/orbit-notifications/compare/v0.3.1...v0.3.2) (2026-11-03)
 
 
