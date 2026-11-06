@@ -6,7 +6,7 @@ require (
 	github.com/gofiber/fiber/v3 v3.6.1
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.12.0
-	github.com/manovaspace/orbit-observability v0.1.0
+	github.com/manovaspace/orbit-observability v0.2.0
 	github.com/open-feature/go-sdk v1.20.0
 	github.com/pressly/goose/v3 v3.29.0
 	google.golang.org/grpc v1.85.0
