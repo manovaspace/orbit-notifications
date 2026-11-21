@@ -24,7 +24,7 @@ internal/domain/                   delivery types and ports (Store, MailSender,
 internal/application/              send/list use case and template rendering
 internal/infrastructure/
   clock/                           system clock adapter
-  featureflags/                    Unleash/OpenFeature adapter
+  featureflags/                    OpenFeature adapter over /v1/flags
   grpc/                            NotificationsService adapter
   httpapi/                         Fiber v3 health server (/healthz, /readyz)
   ids/                             UUID delivery ids
