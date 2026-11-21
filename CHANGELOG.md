@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.2](https://github.com/manovaspace/orbit-notifications/compare/v0.5.1...v0.5.2) (2026-11-21)
+
+
+### Bug Fixes
+
+* read feature flags from the orbit-auth port by default ([#66](https://github.com/manovaspace/orbit-notifications/issues/66)) ([a285cae](https://github.com/manovaspace/orbit-notifications/commit/a285cae97d8d3d4fc718691bc2d6976f8d8b7166))
+
 ## [0.5.1](https://github.com/manovaspace/orbit-notifications/compare/v0.5.0...v0.5.1) (2026-11-20)
 
 
