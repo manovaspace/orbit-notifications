@@ -48,7 +48,7 @@ Ports: gRPC on **10012** (`GRPC_PORT`), HTTP health on **10013** (`HEALTH_PORT`,
 ## Configuration
 
 - **SMTP Adapter:** Standard library `net/smtp` (`internal/infrastructure/smtp/`) connecting to Stalwart in production or Mailpit in dev (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`).
-- **Feature Flags (Unleash):** `UNLEASH_URL`, `UNLEASH_API_TOKEN`, `UNLEASH_APP_NAME`. Flag `manova.notifications.dev_payload` enables persisting plaintext OTP/payload in `delivery_records.dev_payload` JSONB when in dev environment.
+- **Feature Flags (OpenFeature):** read from orbit-auth `/v1/flags` via `FLAGS_URL` (default `http://localhost:10011/v1/flags`; `off` disables). Flag `manova.notifications.dev_payload` enables persisting plaintext OTP/payload in `delivery_records.dev_payload` JSONB when in dev environment.
 - **Internal Auth:** Secured via `ORBIT_INTERNAL_TOKEN` (`x-orbit-internal-token`).
 - **Migrations:** `MIGRATE_ON_START` (default `true`).
 
