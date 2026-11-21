@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	observability "github.com/manovaspace/orbit-observability"
+	observability "github.com/manovaspace/orbit-kit/observability"
 )
 
 // These assertions are the "after" proof of the Fiber v3 migration. The same
