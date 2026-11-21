@@ -10,7 +10,7 @@ import (
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/adaptor"
 
-	observability "github.com/manovaspace/orbit-observability"
+	observability "github.com/manovaspace/orbit-kit/observability"
 )
 
 // Server wraps the Fiber app so main only starts and stops it.

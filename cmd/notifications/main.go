@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/jackc/pgx/v5/pgxpool"
+	observability "github.com/manovaspace/orbit-kit/observability"
 	notificationsv1 "github.com/manovaspace/orbit-notifications/api/notifications/v1"
 	"github.com/manovaspace/orbit-notifications/internal/application"
 	"github.com/manovaspace/orbit-notifications/internal/infrastructure/clock"
@@ -18,7 +19,6 @@ import (
 	"github.com/manovaspace/orbit-notifications/internal/infrastructure/postgres"
 	"github.com/manovaspace/orbit-notifications/internal/infrastructure/postgres/migrations"
 	"github.com/manovaspace/orbit-notifications/internal/infrastructure/smtp"
-	observability "github.com/manovaspace/orbit-observability"
 	googlegrpc "google.golang.org/grpc"
 )
 
