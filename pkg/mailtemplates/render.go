@@ -5,6 +5,7 @@ import (
 	"embed"
 	"fmt"
 	htmltmpl "html/template"
+	"net/url"
 	"strings"
 	texttmpl "text/template"
 )
@@ -83,6 +84,11 @@ func Render(name string, vars map[string]string) (Result, error) {
 			return Result{}, fmt.Errorf("mailtemplates: %s requires %s", name, key)
 		}
 	}
+	if name == "org_invite" && vars["accept_url"] != "" {
+		if err := validateAcceptURL(vars["accept_url"]); err != nil {
+			return Result{}, err
+		}
+	}
 	base := name
 	if localizedNames[name] {
 		base = name + "." + locale
@@ -130,6 +136,7 @@ func withDefaults(name string, vars map[string]string) map[string]string {
 		out[k] = v
 	}
 	out["locale"] = normalizeLocale(out["locale"])
+	out["accept_url"] = strings.TrimSpace(out["accept_url"])
 	if out["expires_in"] == "" {
 		out["expires_in"] = "10 minutes"
 	}
@@ -159,6 +166,16 @@ func withDefaults(name string, vars map[string]string) map[string]string {
 		}
 	}
 	return out
+}
+
+// validateAcceptURL accepts only an absolute http or https URL with a host.
+// The fragment (the invite token) is kept as is.
+func validateAcceptURL(raw string) error {
+	u, err := url.Parse(raw)
+	if err != nil || (u.Scheme != "http" && u.Scheme != "https") || u.Host == "" {
+		return fmt.Errorf("mailtemplates: org_invite accept_url must be an http or https URL with a host")
+	}
+	return nil
 }
 
 func normalizeLocale(locale string) string {

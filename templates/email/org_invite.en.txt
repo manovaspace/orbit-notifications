@@ -2,7 +2,10 @@ Hello,
 
 {{.inviter_name}} invited you to join {{.org_name}}.
 
-Invite code: {{.accept_token}}
+{{if .accept_url}}To accept the invitation, open this link:
+{{.accept_url}}
+
+{{end}}Invite code: {{.accept_token}}
 
 Paste this code in the Manova app to accept the invitation.
 This invitation expires at: {{.expires_at}}
