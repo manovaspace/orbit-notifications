@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0](https://github.com/manovaspace/orbit-notifications/compare/v0.5.2...v0.6.0) (2026-11-22)
+
+
+### Features
+
+* **email:** add an acceptance link to the organization invitation ([#71](https://github.com/manovaspace/orbit-notifications/issues/71)) ([892f36b](https://github.com/manovaspace/orbit-notifications/commit/892f36baf816faea8957b2f9139cde3ec2f64cae))
+
 ## [0.5.2](https://github.com/manovaspace/orbit-notifications/compare/v0.5.1...v0.5.2) (2026-11-21)
 
 
