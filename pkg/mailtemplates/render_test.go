@@ -382,3 +382,96 @@ func TestCompiledLocalizedHTMLKeepsGoActions(t *testing.T) {
 		}
 	}
 }
+
+const orgInviteAcceptURL = "https://acme.falak.demo.manova.space/invite#inv_8f3a2b"
+
+func TestRender_org_invite_with_accept_url(t *testing.T) {
+	tests := []struct {
+		locale     string
+		button     string
+		fallback   string
+		textLinkOK bool
+	}{
+		{locale: "fa", button: "پذیرش دعوت", fallback: "اگر دکمه باز نشد، این نشانی را باز کنید:"},
+		{locale: "en", button: "Accept the invitation", fallback: "If the button does not work, open this link:"},
+	}
+	for _, tc := range tests {
+		t.Run(tc.locale, func(t *testing.T) {
+			vars := orgInviteVars(tc.locale)
+			vars["accept_url"] = orgInviteAcceptURL
+			res, err := Render("org_invite", vars)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if !strings.Contains(res.HTML, `href="`+orgInviteAcceptURL+`"`) {
+				t.Fatalf("html missing unescaped href with fragment: %s", res.HTML)
+			}
+			if !strings.Contains(res.HTML, tc.button) {
+				t.Fatalf("html missing button %q", tc.button)
+			}
+			if !strings.Contains(res.HTML, tc.fallback) {
+				t.Fatalf("html missing fallback line %q", tc.fallback)
+			}
+			if !strings.Contains(res.HTML, `<span dir="ltr">`+orgInviteAcceptURL+`</span>`) {
+				t.Fatal("html missing ltr link text")
+			}
+			if !strings.Contains(res.HTML, "inv_8f3a2b") {
+				t.Fatal("html missing code fallback")
+			}
+			if !strings.Contains(res.Text, orgInviteAcceptURL) {
+				t.Fatalf("text missing accept url:\n%s", res.Text)
+			}
+			if strings.Contains(res.HTML, "<no value>") || strings.Contains(res.Text, "<no value>") {
+				t.Fatal("rendered <no value>")
+			}
+		})
+	}
+}
+
+func TestRender_org_invite_without_accept_url(t *testing.T) {
+	for _, locale := range []string{"fa", "en"} {
+		t.Run(locale, func(t *testing.T) {
+			res, err := Render("org_invite", orgInviteVars(locale))
+			if err != nil {
+				t.Fatal(err)
+			}
+			for _, banned := range []string{"پذیرش دعوت", "Accept the invitation", "open this link", "نشانی را باز کنید", "/invite#", "<no value>"} {
+				if strings.Contains(res.HTML, banned) || strings.Contains(res.Text, banned) {
+					t.Fatalf("output without accept_url contains %q", banned)
+				}
+			}
+			if !strings.Contains(res.HTML, "inv_8f3a2b") || !strings.Contains(res.Text, "inv_8f3a2b") {
+				t.Fatal("code fallback missing")
+			}
+		})
+	}
+}
+
+func TestRender_org_invite_blank_accept_url_is_absent(t *testing.T) {
+	vars := orgInviteVars("en")
+	vars["accept_url"] = "   "
+	res, err := Render("org_invite", vars)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if strings.Contains(res.HTML, "Accept the invitation") || strings.Contains(res.Text, "open this link") {
+		t.Fatal("blank accept_url rendered the link block")
+	}
+}
+
+func TestRender_org_invite_refuses_bad_accept_url(t *testing.T) {
+	for _, bad := range []string{
+		"javascript:alert(1)#inv_8f3a2b",
+		"ftp://acme.example.com/invite#inv_8f3a2b",
+		"https://#inv_8f3a2b",
+		"/invite#inv_8f3a2b",
+		"not a url",
+		"https://acme.example.com/invite\n#inv_8f3a2b",
+	} {
+		vars := orgInviteVars("en")
+		vars["accept_url"] = bad
+		if _, err := Render("org_invite", vars); err == nil {
+			t.Fatalf("accept_url %q accepted, want error", bad)
+		}
+	}
+}
