@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.1](https://github.com/manovaspace/orbit-notifications/compare/v0.6.0...v0.6.1) (2026-11-28)
+
+
+### Bug Fixes
+
+* **flags:** retry the first flags fetch quickly after startup ([b18304c](https://github.com/manovaspace/orbit-notifications/commit/b18304c6c37861ccf257b5ae90e8d90e17ec45c1))
+* **flags:** retry the first flags fetch quickly after startup ([e47769c](https://github.com/manovaspace/orbit-notifications/commit/e47769c43ce8d0cef45f44abefea4d1895bae34a))
+
 ## [0.6.0](https://github.com/manovaspace/orbit-notifications/compare/v0.5.2...v0.6.0) (2026-11-22)
 
 
